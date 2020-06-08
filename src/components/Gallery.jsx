@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Spinner } from "react-bootstrap";
 import Movie from "./Movie";
 
-const Gallery = ({ title, loading, fetchComments, comments, movies }) => (
+const Gallery = ({ title, loading, comments, movies }) => (
   <>
     <h4>{title}</h4>
     <Row className="row-cols-1 row-cols-sm-2 row-cols-lg-4 row-cols-xl-6 mb-4 text-center">
@@ -17,7 +17,7 @@ const Gallery = ({ title, loading, fetchComments, comments, movies }) => (
               data={movie}
               key={movie.imdbID}
               comments={comments}
-              fetchComments={fetchComments}
+              // fetchComments={fetchComments}
             />
           ))}
     </Row>

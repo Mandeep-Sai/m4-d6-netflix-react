@@ -19,7 +19,7 @@ class App extends Component {
     };
   }
 
-  url = "http://www.omdbapi.com/?apikey=[INSERT_YOUR_API_KEY_HERE]";
+  url = "http://www.omdbapi.com/?apikey=c0b9281d";
 
   componentDidMount = () => {
     Promise.all([
@@ -54,15 +54,16 @@ class App extends Component {
       );
   };
 
-  fetchComments = async (movieID) => {
-    const commentsUrl = "https://striveschool.herokuapp.com/api/comments/";
-    const comments = await fetch(commentsUrl + movieID, {
-      headers: new Headers({
-        Authorization: "[INSERT_YOUR_AUTH_HERE]",
-      }),
-    }).then((response) => response.json());
-    this.setState({ comments });
-  };
+  // fetchComments = async (movieID) => {
+  //   const commentsUrl = "https://striveschool.herokuapp.com/api/comments/";
+  //   const comments = await fetch(commentsUrl + movieID, {
+  //     headers : new Headers({
+  //       'Authorization': 'Basic dXNlcjE4OlEyejVWN2hFRlU2SktSckU=',
+  //       // 'Content-type': "application/json"
+  //     }),
+  //   }).then((response) => response.json());
+  //   this.setState({ comments });
+  // };
 
   render() {
     return (
@@ -103,7 +104,7 @@ class App extends Component {
             {this.state.searchedMovies.length > 0 && (
               <Gallery
                 title="Search results"
-                fetchComments={this.fetchComments}
+                // fetchComments={this.fetchComments}
                 comments={this.state.comments}
                 movies={this.state.searchedMovies}
               />
@@ -113,21 +114,21 @@ class App extends Component {
                 <Gallery
                   title="Harry Potter"
                   loading={this.state.loading}
-                  fetchComments={this.fetchComments}
+                  // fetchComments={this.fetchComments}
                   comments={this.state.comments}
                   movies={this.state.harryPotterMovies.slice(0, 6)}
                 />
                 <Gallery
                   title="Spider Man"
                   loading={this.state.loading}
-                  fetchComments={this.fetchComments}
+                  // fetchComments={this.fetchComments}
                   comments={this.state.comments}
                   movies={this.state.spiderManMovies.slice(0, 6)}
                 />
                 <Gallery
                   title="Star Wars"
                   loading={this.state.loading}
-                  fetchComments={this.fetchComments}
+                  // fetchComments={this.fetchComments}
                   comments={this.state.comments}
                   movies={this.state.starWarsMovies.slice(0, 6)}
                 />

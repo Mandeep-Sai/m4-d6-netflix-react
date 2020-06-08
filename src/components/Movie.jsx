@@ -17,6 +17,7 @@ class Movie extends Component {
       rate: 0,
       elementId: this.props.data.imdbID,
     },
+    id: ''
   };
 
   submitComment = async (e) => {
@@ -26,7 +27,7 @@ class Movie extends Component {
       method: "POST",
       body: JSON.stringify(this.state.newComment),
       headers: new Headers({
-        Authorization: "[INSERT_YOUR_AUTH_HERE]",
+        'Authorization': 'Basic dXNlcjE4OlEyejVWN2hFRlU2SktSckU=',
         "Content-Type": "application/json",
       }),
     });
@@ -65,7 +66,8 @@ class Movie extends Component {
           alt="movie"
           onClick={() => {
             this.setState({ selected: !this.state.selected });
-            this.props.fetchComments(this.props.data.imdbID);
+            // this.props.fetchComments(this.props.data.imdbID);
+            this.setState({id: this.props.data.imdbID})
           }}
         />
         <Modal
@@ -77,10 +79,11 @@ class Movie extends Component {
           </Modal.Header>
           <Modal.Body>
             <div className="my-3">
-              {this.props.comments.length > 0 &&
-                this.props.comments[0].elementId === this.props.data.imdbID && (
-                  <CommentList comments={this.props.comments} />
-                )}
+              {/* {console.log(this.props.data.imdbID)} */}
+              {/* {this.props.comments.length > 0 &&
+                this.props.comments[0].elementId === this.props.data.imdbID && ( */}
+                  <CommentList movieId={this.state.id} />
+                  {/* )} */}
               <div className="text-center">
                 <h5 className="my-3">Add a comment</h5>
                 <Form onSubmit={this.submitComment}>
